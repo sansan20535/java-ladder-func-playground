@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 public class LadderServiceImpl implements LadderService {
 
     @Override
-    public Ladder makeLadder(final int height, final int width) {
+    public Ladder makeLadder(final int width, final int height) {
         return new Ladder(makeLadderLines(height, width));
     }
 

@@ -3,20 +3,23 @@ package controller;
 import domain.Ladder;
 import domain.LadderLine;
 import service.LadderService;
+import view.InputView;
 import view.OutputView;
 
 public class LadderController {
 
     private final LadderService ladderService;
     private final OutputView outputView;
+    private final InputView inputView;
 
-    public LadderController(LadderService ladderService, OutputView outputView) {
+    public LadderController(final LadderService ladderService, final OutputView outputView, final InputView inputView) {
         this.ladderService = ladderService;
         this.outputView = outputView;
+        this.inputView = inputView;
     }
 
     public void start() {
-        final Ladder ladder = ladderService.makeLadder(4, 4);
+        final Ladder ladder = ladderService.makeLadder(inputView.inputWidth(), inputView.inputHeight());
         printLadder(ladder);
     }
 
