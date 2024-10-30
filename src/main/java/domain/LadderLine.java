@@ -20,6 +20,10 @@ public class LadderLine {
         return String.join("", line) + "|";
     }
 
+    public List<Boolean> getConnections() {
+        return connections;
+    }
+
     public String getLine() {
         return line;
     }

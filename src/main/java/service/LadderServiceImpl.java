@@ -1,18 +1,17 @@
 package service;
 
 import domain.Ladder;
+import domain.LadderInfo;
 import domain.LadderLine;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class LadderServiceImpl implements LadderService {
 
     @Override
     public Ladder makeLadder(final int width, final int height) {
-        return new Ladder(makeLadderLines(height, width));
+        return new Ladder(makeLadderLines(height, width), new LadderInfo(width, height));
     }
 
     private List<LadderLine> makeLadderLines(final int height, final int width) {
