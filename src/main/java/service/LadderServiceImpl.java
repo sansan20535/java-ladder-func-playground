@@ -3,11 +3,14 @@ package service;
 import domain.Ladder;
 import domain.LadderInfo;
 import domain.LadderLine;
+import domain.LadderLineConnection;
 
 import java.util.*;
 import java.util.stream.IntStream;
 
 public class LadderServiceImpl implements LadderService {
+
+    private static final String EDGE_OF_LADDER = "|";
 
     @Override
     public Ladder makeLadder(final int width, final int height) {
@@ -21,7 +24,8 @@ public class LadderServiceImpl implements LadderService {
     }
 
     private LadderLine makeLadderLine(final int width) {
-        return new LadderLine(makeConnections(width));
+        List<Boolean> connections = makeConnections(width);
+        return new LadderLine(connections, makeLine(connections));
     }
 
     private List<Boolean> makeConnections(final int width) {
@@ -39,5 +43,12 @@ public class LadderServiceImpl implements LadderService {
         if (connections.isEmpty() || !isConnected || !connections.get(connections.size() - 1)) {
             connections.add(isConnected);
         }
+    }
+
+    private String makeLine(final List<Boolean> connections) {
+        final List<String> line = connections.stream()
+                .map(connection -> LadderLineConnection.of(connection).getLadderConnectionFormat())
+                .toList();
+        return String.join("", line) + EDGE_OF_LADDER;
     }
 }

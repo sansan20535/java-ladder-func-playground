@@ -7,17 +7,9 @@ public class LadderLine {
     private final List<Boolean> connections;
     private final String line;
 
-    public LadderLine(final List<Boolean> connections) {
+    public LadderLine(final List<Boolean> connections, final String line) {
         this.connections = connections;
-        this.line = makeLine();
-    }
-
-    private String makeLine() {
-        final List<String> line = connections.stream()
-                .map(connections -> LadderLineConnection.of(connections).getLadderConnectionFormat())
-                .toList();
-
-        return String.join("", line) + "|";
+        this.line = line;
     }
 
     public List<Boolean> getConnections() {

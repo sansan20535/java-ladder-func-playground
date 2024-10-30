@@ -4,15 +4,15 @@ import java.util.List;
 
 public class User {
 
-    private int name;
+    private final String name;
     private int position;
 
-    public User(final int name, final int position) {
+    public User(final String name, final int position) {
         this.name = name;
         this.position = position;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
@@ -22,7 +22,7 @@ public class User {
 
     public void updatePosition(final List<LadderLine> ladderLines, final LadderInfo ladderInfo) {
         for (LadderLine ladderLine : ladderLines) {
-            final boolean isConnectedRight = checkRightConnection(ladderLine.getConnections(), ladderInfo.getWidth());
+            final boolean isConnectedRight = checkRightConnection(ladderLine.getConnections(), ladderInfo.width());
             final boolean isConnectedLeft = checkLeftConnection(ladderLine.getConnections());
             decideMoving(isConnectedLeft, isConnectedRight);
         }
