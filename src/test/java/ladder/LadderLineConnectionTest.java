@@ -1,3 +1,5 @@
+package ladder;
+
 import domain.ladder.LadderLineConnection;
 import org.junit.jupiter.api.*;
 

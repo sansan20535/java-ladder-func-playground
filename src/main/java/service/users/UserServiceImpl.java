@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updatePosition(final Ladder ladder, final Users users) {
         for (User user : users.users()) {
-            user.updatePosition(ladder.ladderLines(), ladder.ladderInfo());
+            userRepository.updatePosition(user, ladder.ladderLines(), ladder.ladderInfo());
         }
     }
 
