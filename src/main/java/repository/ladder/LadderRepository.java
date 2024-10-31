@@ -10,7 +10,7 @@ public class LadderRepository {
         return ladder;
     }
 
-    public void setLadder(Ladder ladder) {
+    public void setLadder(final Ladder ladder) {
         this.ladder = ladder;
     }
 }

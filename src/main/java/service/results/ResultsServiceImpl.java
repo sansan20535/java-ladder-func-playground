@@ -9,12 +9,12 @@ public class ResultsServiceImpl implements ResultsService {
 
     private final ResultsRepository resultsRepository;
 
-    public ResultsServiceImpl(ResultsRepository resultsRepository) {
+    public ResultsServiceImpl(final ResultsRepository resultsRepository) {
         this.resultsRepository = resultsRepository;
     }
 
     @Override
-    public void makeResults(List<String> results) {
+    public void makeResults(final List<String> results) {
         resultsRepository.setResults(new Results(results));
     }
 

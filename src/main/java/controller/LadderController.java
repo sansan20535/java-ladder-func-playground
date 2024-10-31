@@ -68,7 +68,7 @@ public class LadderController {
         if (!isAll) {
             outputView.printExecutionResult();
             outputView.printUserResult(results.results()
-                    .get(users.findByName(wantedUserName).getPosition())
+                    .get(userService.findByName(wantedUserName).getPosition())
             );
             return;
         }

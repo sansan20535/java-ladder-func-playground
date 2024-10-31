@@ -10,7 +10,7 @@ public class ResultsRepository {
         return results;
     }
 
-    public void setResults(Results results) {
+    public void setResults(final Results results) {
         this.results = results;
     }
 }

@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
     public Users getUsers() {
         return userRepository.getUsers();
     }
+
+    @Override
+    public User findByName(final String name) {
+        return userRepository.findByName(name);
+    }
 }
