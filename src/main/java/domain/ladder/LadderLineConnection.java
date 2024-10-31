@@ -1,4 +1,4 @@
-package domain;
+package domain.ladder;
 
 import java.util.Arrays;
 
@@ -17,10 +17,6 @@ public enum LadderLineConnection {
 
     public String getLadderConnectionFormat() {
         return ladderConnectionFormat;
-    }
-
-    public boolean isConnected() {
-        return isConnected;
     }
 
     public static LadderLineConnection of(final boolean isConnected) {

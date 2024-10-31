@@ -1,4 +1,7 @@
-package domain;
+package domain.users;
+
+import domain.ladder.LadderInfo;
+import domain.ladder.LadderLine;
 
 import java.util.List;
 
@@ -22,8 +25,8 @@ public class User {
 
     public void updatePosition(final List<LadderLine> ladderLines, final LadderInfo ladderInfo) {
         for (LadderLine ladderLine : ladderLines) {
-            final boolean isConnectedRight = checkRightConnection(ladderLine.getConnections(), ladderInfo.width());
-            final boolean isConnectedLeft = checkLeftConnection(ladderLine.getConnections());
+            final boolean isConnectedRight = checkRightConnection(ladderLine.connections(), ladderInfo.width());
+            final boolean isConnectedLeft = checkLeftConnection(ladderLine.connections());
             decideMoving(isConnectedLeft, isConnectedRight);
         }
     }

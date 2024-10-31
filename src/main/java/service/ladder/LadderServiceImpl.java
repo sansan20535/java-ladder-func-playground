@@ -1,20 +1,26 @@
-package service;
+package service.ladder;
 
-import domain.Ladder;
-import domain.LadderInfo;
-import domain.LadderLine;
-import domain.LadderLineConnection;
+import domain.ladder.Ladder;
+import domain.ladder.LadderInfo;
+import domain.ladder.LadderLine;
+import domain.ladder.LadderLineConnection;
+import repository.ladder.LadderRepository;
 
 import java.util.*;
 import java.util.stream.IntStream;
 
 public class LadderServiceImpl implements LadderService {
 
+    private final LadderRepository ladderRepository;
     private static final String EDGE_OF_LADDER = "|";
 
+    public LadderServiceImpl(final LadderRepository ladderRepository) {
+        this.ladderRepository = ladderRepository;
+    }
+
     @Override
-    public Ladder makeLadder(final int width, final int height) {
-        return new Ladder(makeLadderLines(height, width), new LadderInfo(width, height));
+    public void makeLadder(final int width, final int height) {
+        ladderRepository.setLadder(new Ladder(makeLadderLines(height, width), new LadderInfo(width, height)));
     }
 
     private List<LadderLine> makeLadderLines(final int height, final int width) {
@@ -50,5 +56,10 @@ public class LadderServiceImpl implements LadderService {
                 .map(connection -> LadderLineConnection.of(connection).getLadderConnectionFormat())
                 .toList();
         return String.join("", line) + EDGE_OF_LADDER;
+    }
+
+    @Override
+    public Ladder getLadder() {
+        return ladderRepository.getLadder();
     }
 }
