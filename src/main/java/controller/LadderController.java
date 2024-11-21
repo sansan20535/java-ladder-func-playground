@@ -56,13 +56,8 @@ public class LadderController {
         int printCount = 0;
         while (printCount < users.users().size()) {
             final String wantedUserName = inputView.inputWantedUserName();
-            final boolean isAll = checkUserName(wantedUserName);
-            printResult(wantedUserName, users, results, isAll);
+            printResult(wantedUserName, users, results, wantedUserName.equals("all"));
         }
-    }
-
-    private boolean checkUserName(final String wantedUserName) {
-        return wantedUserName.equals("all");
     }
 
     private void printResult(final String wantedUserName, final Users users, final Results results, final boolean isAll) {
