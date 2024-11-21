@@ -20,9 +20,9 @@ public enum LadderLineConnection {
     }
 
     public static LadderLineConnection of(final boolean isConnected) {
-        return Arrays.stream(values())
-                .filter(ladderLineConnection -> ladderLineConnection.isConnected == isConnected)
-                .findAny()
-                .orElseThrow();
+        if (isConnected) {
+            return CONNECT_LADDER;
+        }
+        return NOT_CONNECT_LADDER;
     }
 }

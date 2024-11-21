@@ -3,7 +3,6 @@ package service.ladder;
 import domain.ladder.Ladder;
 import domain.ladder.LadderInfo;
 import domain.ladder.LadderLine;
-import domain.ladder.LadderLineConnection;
 import repository.ladder.LadderRepository;
 
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import java.util.stream.IntStream;
 public class LadderServiceImpl implements LadderService {
 
     private final LadderRepository ladderRepository;
-    private static final String EDGE_OF_LADDER = "|";
 
     public LadderServiceImpl(final LadderRepository ladderRepository) {
         this.ladderRepository = ladderRepository;
@@ -33,7 +31,7 @@ public class LadderServiceImpl implements LadderService {
 
     private LadderLine makeLadderLine(final int width) {
         List<Boolean> connections = makeConnections(width);
-        return new LadderLine(connections, makeLine(connections));
+        return new LadderLine(connections);
     }
 
     private List<Boolean> makeConnections(final int width) {
@@ -51,13 +49,6 @@ public class LadderServiceImpl implements LadderService {
         if (connections.isEmpty() || !isConnected || !connections.get(connections.size() - 1)) {
             connections.add(isConnected);
         }
-    }
-
-    private String makeLine(final List<Boolean> connections) {
-        final List<String> line = connections.stream()
-                .map(connection -> LadderLineConnection.of(connection).getLadderConnectionFormat())
-                .toList();
-        return String.join("", line) + EDGE_OF_LADDER;
     }
 
     @Override

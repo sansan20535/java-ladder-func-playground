@@ -29,7 +29,7 @@ public class LadderController {
 
     public void start() {
         userService.makeUsers(inputView.inputUserNames());
-        resultsService.makeResults(inputView.inputResults());
+        resultsService.saveResults(inputView.inputResults());
         ladderService.makeLadder(userService.getUsers().users().size(), inputView.inputHeight());
 
         userService.updatePosition(ladderService.getLadder(), userService.getUsers());
@@ -44,7 +44,7 @@ public class LadderController {
         }
         outputView.printEmpty();
         for (LadderLine ladderLine : ladder.ladderLines()) {
-            outputView.printLadderLine(ladderLine.line());
+            outputView.printLadderLine(ladderLine.connections());
         }
         for (String result : results.results()) {
             outputView.printResult(result);

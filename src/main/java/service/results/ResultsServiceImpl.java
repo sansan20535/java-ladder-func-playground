@@ -14,7 +14,7 @@ public class ResultsServiceImpl implements ResultsService {
     }
 
     @Override
-    public void makeResults(final List<String> results) {
+    public void saveResults(final List<String> results) {
         resultsRepository.setResults(new Results(results));
     }
 

@@ -1,6 +1,12 @@
 package view;
 
+import domain.ladder.LadderLineConnection;
+
+import java.util.List;
+
 public class OutputView {
+
+    private static final String EDGE_OF_LADDER = "|";
 
     public void printEmpty() {
         System.out.println(" ");
@@ -14,8 +20,11 @@ public class OutputView {
         System.out.print(result + " ");
     }
 
-    public void printLadderLine(final String ladderLine) {
-        System.out.println(ladderLine);
+    public void printLadderLine(final List<Boolean> connections) {
+        final List<String> line = connections.stream()
+                .map(connection -> LadderLineConnection.of(connection).getLadderConnectionFormat())
+                .toList();
+        System.out.println(String.join("", line) + EDGE_OF_LADDER);
     }
 
     public void printUserResult(final String result) {
