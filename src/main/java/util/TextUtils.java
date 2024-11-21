@@ -7,7 +7,7 @@ public class TextUtils {
 
     private static final String SPLIT_CHARACTERS = ",";
 
-    public static List<String> splitMessage(final String message) {
+    public static List<String> splitMessageWithComma(final String message) {
         return new ArrayList<String>(List.of(message.split(SPLIT_CHARACTERS)));
     }
 }
