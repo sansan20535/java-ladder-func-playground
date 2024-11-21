@@ -6,7 +6,9 @@ import domain.ladder.LadderLine;
 import domain.ladder.LadderLineConnection;
 import repository.ladder.LadderRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class LadderServiceImpl implements LadderService {
